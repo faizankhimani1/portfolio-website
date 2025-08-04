@@ -371,7 +371,7 @@
 
       <div class="col-lg-8 mt-5 mt-lg-0">
 
-        <form action="https://getform.io/f/adrgomva" method="post" role="form" class="php-email-form">
+        <form id="contact-form" role="form" >
           <div class="row">
             <div class="col-md-6 form-group">
               <input type="text" name="name" class="form-control" id="name" placeholder="Your Name" required>
@@ -384,7 +384,7 @@
             <input type="text" class="form-control" name="subject" id="subject" placeholder="Subject" required>
           </div>
           <div class="form-group mt-3">
-            <textarea class="form-control" name="message" rows="5" placeholder="Message" required></textarea>
+            <textarea class="form-control" name="message" id="message" rows="5" placeholder="Message" required></textarea>
           </div>
           <div class="my-3">
             <div class="loading">Loading</div>
@@ -401,7 +401,52 @@
     </div>
 
   </div>
-</section><!-- End Contact Section -->
+
+<!-- Firebase SDKs: module scripts -->
+<script type="module">
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/9.6.1/firebase-app.js";
+  import { getFirestore, collection, addDoc } from "https://www.gstatic.com/firebasejs/9.6.1/firebase-firestore.js";
+
+  const firebaseConfig = {
+    apiKey: "AIzaSyCCjv8BfLdV9iCpyzNUf-nPKl9iarna_aM",
+    authDomain: "portfolio-website-29a34.firebaseapp.com",
+    projectId: "portfolio-website-29a34",
+    storageBucket: "portfolio-website-29a34.appspot.com",
+    messagingSenderId: "101593271363",
+    appId: "1:101593271363:web:41918bf5bf354f391918f6",
+    measurementId: "G-9D4DWXNDQZ"
+  };
+
+  // Initialize Firebase app
+  const app = initializeApp(firebaseConfig);
+  const db = getFirestore(app);
+
+  // Form submit handler
+  document.getElementById("contact-form").addEventListener("submit", async (e) => {
+    e.preventDefault();
+
+    const name = document.getElementById("name").value;
+    const email = document.getElementById("email").value;
+    const subject = document.getElementById("subject").value;
+    const message = document.getElementById("message").value;
+
+    try {
+      await addDoc(collection(db, "contacts"), {
+        name,
+        email,
+        subject,
+        message,
+        createdAt: new Date()
+      });
+      alert("Message sent!");
+      document.getElementById("contact-form").reset();
+      window.location.href = "thankyou.html";  // Ye line redirect ke liye hai
+    } catch (error) {
+      alert("Error: " + error.message);
+    }
+  });
+</script>
+<!-- End Contact Section -->
 
   <!-- ======= Footer ======= -->
   <footer id="footer">
