@@ -42,6 +42,49 @@ h6 {
   }
 }
 
+/* Improved Hire Me button styling */
+a.hire-btn {
+  display: inline-block;
+  padding: 10px 20px;
+  background: linear-gradient(
+    135deg,
+    #a0e9d7,
+    #a9c9ff
+  ); /* light pastel colors */
+  color: #2c3e50; /* dark blue-gray color */
+  font-weight: 600;
+  border-radius: 30px;
+  text-decoration: none;
+  cursor: pointer;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+  transition: background 0.3s ease, box-shadow 0.3s ease, transform 0.2s ease;
+  font-size: 16px;
+}
+
+/* Hover effect thoda dark background, text white kar do */
+a.hire-btn:hover,
+a.hire-btn:focus {
+  background: linear-gradient(135deg, #0984e3, #00b894);
+  color: white;
+  box-shadow: 0 6px 20px rgba(9, 132, 227, 0.6);
+  transform: translateY(-3px);
+  outline: none;
+}
+
+/* Mobile styles */
+@media (max-width: 600px) {
+  a.hire-btn {
+    display: block;
+    width: 100%;
+    text-align: center;
+    padding: 14px 0;
+    font-size: 18px;
+    border-radius: 40px;
+    box-shadow: none;
+    transform: none;
+  }
+}
+
 /*--------------------------------------------------------------
 # Preloader
 --------------------------------------------------------------*/
@@ -221,7 +264,7 @@ h6 {
   margin-left: 5px;
 }
 
-.navbar>ul>li>a:before {
+.navbar > ul > li > a:before {
   content: "";
   position: absolute;
   width: 0;
@@ -235,7 +278,7 @@ h6 {
 }
 
 .navbar a:hover:before,
-.navbar li:hover>a:before,
+.navbar li:hover > a:before,
 .navbar .active:before {
   visibility: visible;
   width: 25px;
@@ -244,7 +287,7 @@ h6 {
 .navbar a:hover,
 .navbar .active,
 .navbar .active:focus,
-.navbar li:hover>a {
+.navbar li:hover > a {
   color: #222222;
 }
 
@@ -282,11 +325,11 @@ h6 {
 
 .navbar .dropdown ul a:hover,
 .navbar .dropdown ul .active:hover,
-.navbar .dropdown ul li:hover>a {
+.navbar .dropdown ul li:hover > a {
   color: #34b7a7;
 }
 
-.navbar .dropdown:hover>ul {
+.navbar .dropdown:hover > ul {
   opacity: 1;
   top: 100%;
   visibility: visible;
@@ -298,7 +341,7 @@ h6 {
   visibility: hidden;
 }
 
-.navbar .dropdown .dropdown:hover>ul {
+.navbar .dropdown .dropdown:hover > ul {
   opacity: 1;
   top: 0;
   left: 100%;
@@ -310,7 +353,7 @@ h6 {
     left: -90%;
   }
 
-  .navbar .dropdown .dropdown:hover>ul {
+  .navbar .dropdown .dropdown:hover > ul {
     left: -100%;
   }
 }
@@ -382,7 +425,7 @@ h6 {
 
 .navbar-mobile a:hover,
 .navbar-mobile .active,
-.navbar-mobile li:hover>a {
+.navbar-mobile li:hover > a {
   color: #34b7a7;
 }
 
@@ -417,11 +460,11 @@ h6 {
 
 .navbar-mobile .dropdown ul a:hover,
 .navbar-mobile .dropdown ul .active:hover,
-.navbar-mobile .dropdown ul li:hover>a {
+.navbar-mobile .dropdown ul li:hover > a {
   color: #34b7a7;
 }
 
-.navbar-mobile .dropdown>.dropdown-active {
+.navbar-mobile .dropdown > .dropdown-active {
   display: block;
 }
 
@@ -458,6 +501,25 @@ h6 {
   color: #6f6f6f;
   margin: 10px 0 0 0;
   font-size: 22px;
+}
+
+#hero .btn-hire {
+  font-family: "Raleway", sans-serif;
+  text-transform: uppercase;
+  font-weight: 600;
+  font-size: 12px;
+  letter-spacing: 1px;
+  display: inline-block;
+  padding: 12px 40px;
+  border-radius: 50px;
+  transition: 0.5s;
+  margin-top: 30px;
+  color: #fff;
+  background: #34b7a7; /* orange-ish for contrast */
+}
+
+#hero .btn-hire:hover {
+  background: #34b7a7; /* lighter on hover */
 }
 
 #hero .btn-about {
@@ -551,7 +613,8 @@ section {
 # Cta
 --------------------------------------------------------------*/
 .cta {
-  background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url("../img/bg-1.jpg") fixed center center;
+  background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)),
+    url("../img/bg-1.jpg") fixed center center;
   background-size: cover;
   padding: 80px 0;
 }
@@ -1091,7 +1154,10 @@ section {
   position: relative;
 }
 
-.portfolio-details .portfolio-details-slider .swiper-pagination .swiper-pagination-bullet {
+.portfolio-details
+  .portfolio-details-slider
+  .swiper-pagination
+  .swiper-pagination-bullet {
   width: 12px;
   height: 12px;
   background-color: #fff;
@@ -1099,7 +1165,10 @@ section {
   border: 1px solid #34b7a7;
 }
 
-.portfolio-details .portfolio-details-slider .swiper-pagination .swiper-pagination-bullet-active {
+.portfolio-details
+  .portfolio-details-slider
+  .swiper-pagination
+  .swiper-pagination-bullet-active {
   background-color: #34b7a7;
 }
 
@@ -1122,7 +1191,7 @@ section {
   font-size: 15px;
 }
 
-.portfolio-details .portfolio-info ul li+li {
+.portfolio-details .portfolio-info ul li + li {
   margin-top: 10px;
 }
 
@@ -1256,7 +1325,7 @@ section {
   padding: 10px 12px;
 }
 
-.contact .php-email-form button[type=submit] {
+.contact .php-email-form button[type="submit"] {
   background: #34b7a7;
   border: 0;
   padding: 10px 30px 12px 30px;
@@ -1265,7 +1334,7 @@ section {
   border-radius: 50px;
 }
 
-.contact .php-email-form button[type=submit]:hover {
+.contact .php-email-form button[type="submit"]:hover {
   background: #3dc8b7;
 }
 
