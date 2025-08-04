@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Hire Me - Contact Form</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        background: #f5f8fa;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 100vh;
+      }
+      .hire1-container {
+        background: white;
+        padding: 30px 40px;
+        border-radius: 10px;
+        box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+        width: 90%;
+        max-width: 450px;
+        position: relative;
+        z-index: 1;
+      }
+      .hire1-title {
+        text-align: center;
+        color: #0984e3;
+        margin-bottom: 25px;
+      }
+      .hire1-form {
+        display: flex;
+        flex-direction: column;
+      }
+      .hire1-label {
+        margin-bottom: 6px;
+        font-weight: 600;
+        color: #333;
+      }
+      .hire1-input,
+      .hire1-textarea {
+        padding: 10px 12px;
+        margin-bottom: 18px;
+        border: 1px solid #ccc;
+        border-radius: 6px;
+        font-size: 15px;
+        resize: vertical;
+        transition: border-color 0.3s ease;
+      }
+      .hire1-input:focus,
+      .hire1-textarea:focus {
+        outline: none;
+        border-color: #0984e3;
+        box-shadow: 0 0 6px rgba(9, 132, 227, 0.4);
+      }
+      .hire1-textarea {
+        min-height: 100px;
+      }
+      .hire1-button,
+      .hire1-cancel-btn {
+        padding: 12px;
+        border-radius: 30px;
+        font-size: 18px;
+        font-weight: 600;
+        cursor: pointer;
+        border: none;
+        box-shadow: 0 4px 15px rgba(9, 132, 227, 0.4);
+        transition: background 0.3s ease, box-shadow 0.3s ease;
+        margin-top: 10px;
+      }
+      .hire1-button {
+        background: linear-gradient(135deg, #0984e3, #00b894);
+        color: white;
+      }
+      .hire1-button:hover,
+      .hire1-button:focus {
+        background: linear-gradient(135deg, #00b894, #0984e3);
+        box-shadow: 0 6px 20px rgba(0, 184, 148, 0.7);
+        outline: none;
+      }
+      .hire1-cancel-btn {
+        background: #d63031;
+        color: white;
+        box-shadow: 0 4px 15px rgba(214, 48, 49, 0.6);
+      }
+      .hire1-cancel-btn:hover,
+      .hire1-cancel-btn:focus {
+        background: #b71c1c;
+        box-shadow: 0 6px 20px rgba(183, 28, 28, 0.8);
+        outline: none;
+      }
+      .hire1-status {
+        text-align: center;
+        margin-top: 15px;
+        font-weight: 600;
+      }
+      .hire1-status-success {
+        color: #00b894;
+      }
+      .hire1-status-error {
+        color: #d63031;
+      }
+
+      /* Loader styles */
+      #hire1-loader {
+        display: none;
+        position: fixed;
+        top: 0; left: 0;
+        width: 100vw;
+        height: 100vh;
+        background: rgba(0,0,0,0.4);
+        justify-content: center;
+        align-items: center;
+        z-index: 9999;
+        flex-direction: column;
+        color: white;
+        font-size: 18px;
+        font-weight: bold;
+      }
+
+      /* Loader spinner */
+      .loader {
+        width: 70px;
+        aspect-ratio: 1;
+        background: conic-gradient(from -45deg,#8A8780 90deg,#94BA65 0 180deg,#2790B0 0 270deg,#2B4E72 0);
+        animation: l20 2s infinite; 
+        border-radius: 50%;
+        margin-bottom: 15px;
+      }
+      @keyframes l20 {
+        0%  {clip-path: polygon(0    0   ,100% 0   ,50% 50%)}
+        25% {clip-path: polygon(100% 0   ,100% 100%,50% 50%)}
+        50% {clip-path: polygon(100% 100%,0    100%,50% 50%)}
+        75% {clip-path: polygon(0    100%,0    0   ,50% 50%)}
+        100%{clip-path: polygon(0    0   ,100% 0   ,50% 50%)}
+      }
+
+      @media (max-width: 600px) {
+        .hire1-container {
+          padding: 20px;
+          width: 95%;
+        }
+        .hire1-button,
+        .hire1-cancel-btn {
+          font-size: 16px;
+          padding: 10px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Loader -->
+    <div id="hire1-loader" class="custom-loader" role="alert"
+      aria-live="assertive" aria-busy="true">
+      <div class="loader"></div>
+      Sending...
+    </div>
+
+    <div class="hire1-container" aria-hidden="false">
+      <h1 class="hire1-title">Hire Me</h1>
+      <form id="hire1-form" class="hire1-form"
+        aria-label="Hire me contact form">
+        <label for="hire1-name" class="hire1-label">Name</label>
+        <input
+          type="text"
+          id="hire1-name"
+          class="hire1-input"
+          placeholder="Your Name"
+          required
+          aria-required="true" />
+
+        <label for="hire1-email" class="hire1-label">Email</label>
+        <input
+          type="email"
+          id="hire1-email"
+          class="hire1-input"
+          placeholder="Your Email"
+          required
+          aria-required="true" />
+
+        <label for="hire1-message" class="hire1-label">Message</label>
+        <textarea
+          id="hire1-message"
+          class="hire1-textarea"
+          placeholder="Your message or requirements"
+          required
+          aria-required="true"></textarea>
+
+        <button type="submit" class="hire1-button">Send Request</button>
+        <button type="button" class="hire1-cancel-btn" id="hire1-cancel">
+          Cancel
+        </button>
+      </form>
+      <div id="hire1-status" class="hire1-status" role="alert"
+        aria-live="polite"></div>
+    </div>
+
+    <!-- Firebase SDKs -->
+    <script type="module">
+      import { initializeApp } from "https://www.gstatic.com/firebasejs/9.6.1/firebase-app.js";
+      import { getFirestore, collection, addDoc } from "https://www.gstatic.com/firebasejs/9.6.1/firebase-firestore.js";
+
+      const firebaseConfig = {
+        apiKey: "AIzaSyCCjv8BfLdV9iCpyzNUf-nPKl9iarna_aM",
+        authDomain: "portfolio-website-29a34.firebaseapp.com",
+        projectId: "portfolio-website-29a34",
+        storageBucket: "portfolio-website-29a34.appspot.com",
+        messagingSenderId: "101593271363",
+        appId: "1:101593271363:web:41918bf5bf354f391918f6",
+        measurementId: "G-9D4DWXNDQZ"
+      };
+
+      const app = initializeApp(firebaseConfig);
+      const db = getFirestore(app);
+
+      const form = document.getElementById("hire1-form");
+      const statusDiv = document.getElementById("hire1-status");
+      const cancelBtn = document.getElementById("hire1-cancel");
+      const loader = document.getElementById("hire1-loader");
+
+      form.addEventListener("submit", async (e) => {
+        e.preventDefault();
+
+        const name = document.getElementById("hire1-name").value.trim();
+        const email = document.getElementById("hire1-email").value.trim();
+        const message = document.getElementById("hire1-message").value.trim();
+
+        if (!name || !email || !message) {
+          statusDiv.textContent = "Please fill in all fields.";
+          statusDiv.className = "hire1-status hire1-status-error";
+          return;
+        }
+
+        loader.style.display = "flex"; // Show loader
+
+        try {
+          await addDoc(collection(db, "hire_requests"), {
+            name,
+            email,
+            message,
+            createdAt: new Date(),
+          });
+
+          form.reset();
+          statusDiv.textContent = "Request sent successfully! Redirecting...";
+          statusDiv.className = "hire1-status hire1-status-success";
+
+          loader.style.display = "none"; // Hide loader
+
+          setTimeout(() => {
+            window.location.href = "thankyou.html"; // Redirect to thankyou page
+          }, 2000);
+        } catch (error) {
+          loader.style.display = "none"; // Hide loader on error
+          statusDiv.textContent = "Error sending request: " + error.message;
+          statusDiv.className = "hire1-status hire1-status-error";
+        }
+      });
+
+      cancelBtn.addEventListener("click", () => {
+        window.location.href = "index.html"; // Redirect to homepage
+      });
+    </script>
+  </body>
+</html>
