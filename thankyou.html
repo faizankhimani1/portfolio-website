@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <title>Thank You</title>
-        <style>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Thank You</title>
+    <style>
     /* Unique prefix: typ- (thank you page) */
     .typ-body {
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -56,11 +56,16 @@
       to { opacity: 1; transform: translateY(0); }
     }
   </style>
-    </head>
-    <body class="typ-body">
-        <h1 class="typ-heading">Thank You!</h1>
-        <p class="typ-text">Your message has been received. We will get back to
-            you soon.</p>
-        <a href="index.html" class="typ-button">Go back to Home</a>
-    </body>
+  </head>
+  <body class="typ-body">
+    <h1 class="typ-heading">Thank You!</h1>
+    <p class="typ-text">Your message has been received. We will get back to
+      you soon.</p>
+    <a href="index.html" class="typ-button">Go back to Home</a>
+    <script>
+  setTimeout(() => {
+    window.location.href = "index.html";  // Yahan home page ka URL daalein
+  }, 5000);
+</script>
+  </body>
 </html>
