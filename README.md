@@ -9,7 +9,7 @@ Explore my work, skills, and the journey as I grow as a developer.
 
 ## 🧠 About Me
 
-Hey there! I'm **Faizan Khimani**, a passionate and self-driven **Frontend Web Developer** currently diving deep into the world of web technologies. I love crafting clean, responsive, and user-friendly websites. With every line of code, I aim to improve my skills and create better digital experiences.
+Hey there! I'm **Faizan Khimani**, a passionate and self-driven **Frontend Web Developer** currently diving deep into the world of web technologies. I love crafting clean, responsive, and user-friendly websites. With every line of code, I strive to enhance my skills and craft more effective digital experiences.
 
 - 💻 Currently learning: **HTML, CSS, JavaScript, React**
 - 🛠️ Tools: **VS Code, GitHub, Netlify**
@@ -30,7 +30,7 @@ Hey there! I'm **Faizan Khimani**, a passionate and self-driven **Frontend Web D
 
 Feel free to explore my portfolio and reach out for collaboration, feedback, or just to say hi!
 
-- 📧 Email: your.email@gmail.com
+- 📧 Email: faizankhimani1@gmail.com
 - 🔗 LinkedIn: [linkedin.com/in/yourprofile]([https://linkedin.com/in/yourprofile](https://www.linkedin.com/in/faizan-khimani-/))
 - 🐙 GitHub: [github.com/faizankhimani]([https://github.com/faizankhimani](https://github.com/faizankhimani1))
 
