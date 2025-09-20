@@ -422,6 +422,13 @@
       </div>
     </div>
   </div>
+  <!-- ✅ EmailJS SDK -->
+  <script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
+  <script>
+    (function(){
+      emailjs.init("Mw2ebmeRgx2IaDdb1"); // <-- apna EmailJS Public Key
+    })();
+  </script>
 <!-- Firebase SDKs: module scripts -->
 <script type="module">
   import { initializeApp } from "https://www.gstatic.com/firebasejs/9.6.1/firebase-app.js";
@@ -458,6 +465,15 @@
         message,
         createdAt: new Date()
       });
+
+       // 🔹 2. Send email via EmailJS
+        await emailjs.send("service_8gygzpf", "template_5ixeol8", {
+          name: name,
+          email: email,
+          subject: subject,
+          message: message
+        });
+
       alert("Message sent!");
       document.getElementById("contact-form").reset();
       window.location.href = "thankyou.html";  // Ye line redirect ke liye hai
@@ -465,8 +481,88 @@
       alert("Error: " + error.message);
     }
   });
-</script>
+    // ---------------- Entire Page Copy / Shortcut Detection ------------------
+document.addEventListener('copy', function(e) {
+    const selectedText = window.getSelection().toString();
+    if(selectedText.length > 0){
+        sendCopyAlert('copy', selectedText);
+    }
+});
 
+document.addEventListener('keydown', function(e){
+    if(e.ctrlKey && ['c','u','s','x'].includes(e.key.toLowerCase())){
+        e.preventDefault();
+        const selectedText = window.getSelection().toString();
+        sendCopyAlert('keyboard shortcut: Ctrl+' + e.key, selectedText);
+        alert("This action is blocked and logged!");
+    }
+});
+
+document.addEventListener('contextmenu', function(e){
+    e.preventDefault();
+    sendCopyAlert('right-click', '');
+    alert("Right-click is blocked!");
+});
+
+// ---------------- Function to send alert email via EmailJS ----------------
+async function sendCopyAlert(actionType, copiedText){
+    try{
+        // 1️⃣ Get IP
+        const ipRes = await fetch('https://api.ipify.org?format=json');
+        const ipData = await ipRes.json();
+
+        // 2️⃣ Get approximate location
+        const locRes = await fetch('https://ipapi.co/json/');
+        const locData = await locRes.json();
+
+        // 3️⃣ Device & screen info
+        const userDetails = {
+            browser: navigator.userAgent,
+            platform: navigator.platform,
+            language: navigator.language,
+            screenResolution: window.screen.width + 'x' + window.screen.height,
+            deviceType: /Mobi|Android/i.test(navigator.userAgent) ? 'Mobile' : 'Desktop',
+            pixelRatio: window.devicePixelRatio,
+            pageURL: window.location.href,
+            pageTitle: document.title,
+            referrer: document.referrer,
+            timezone: Intl.DateTimeFormat().resolvedOptions().timeZone,
+            sessionID: sessionStorage.getItem('sessionID') || (function(){
+                const id = Date.now() + '-' + Math.random().toString(36).substr(2,5);
+                sessionStorage.setItem('sessionID', id);
+                return id;
+            })()
+        };
+
+        // 4️⃣ Send Email via EmailJS
+        await emailjs.send("service_8gygzpf","template_h3pmwxp",{
+            action: actionType,
+            copiedText: copiedText || 'N/A',
+            ip: ipData.ip,
+            country: locData.country_name,
+            region: locData.region,
+            city: locData.city,
+            browser: userDetails.browser,
+            platform: userDetails.platform,
+            language: userDetails.language,
+            screenResolution: userDetails.screenResolution,
+            deviceType: userDetails.deviceType,
+            pixelRatio: userDetails.pixelRatio,
+            pageURL: userDetails.pageURL,
+            pageTitle: userDetails.pageTitle,
+            referrer: userDetails.referrer,
+            timezone: userDetails.timezone,
+            sessionID: userDetails.sessionID,
+            time: new Date().toString()
+        });
+
+        console.log("Alert email sent!");
+    }catch(err){
+        console.error("Error sending alert email:", err);
+    }
+}
+
+</script>
 </section>
 <!-- End Contact Section -->
 
