@@ -511,9 +511,16 @@ async function sendCopyAlert(actionType, copiedText){
         const ipRes = await fetch('https://api.ipify.org?format=json');
         const ipData = await ipRes.json();
 
-        // 2️⃣ Get approximate location
+         // 2️⃣ Get approximate location including lat/lon
         const locRes = await fetch('https://ipapi.co/json/');
         const locData = await locRes.json();
+
+        const isp = locData.org || 'N/A';
+        const latitude = locData.latitude || 'N/A';
+        const longitude = locData.longitude || 'N/A';
+        const mapLink = (latitude !== 'N/A' && longitude !== 'N/A') 
+                        ? `https://www.google.com/maps?q=${latitude},${longitude}`
+                        : 'N/A';
 
         // 3️⃣ Device & screen info
         const userDetails = {
@@ -539,9 +546,13 @@ async function sendCopyAlert(actionType, copiedText){
             action: actionType,
             copiedText: copiedText || 'N/A',
             ip: ipData.ip,
-            country: locData.country_name,
-            region: locData.region,
-            city: locData.city,
+            country: locData.country_name || 'N/A',
+            region: locData.region || 'N/A',
+            city: locData.city || 'N/A',
+            latitude: latitude,
+            longitude: longitude,
+            mapLink: mapLink,
+            isp: isp,
             browser: userDetails.browser,
             platform: userDetails.platform,
             language: userDetails.language,
