@@ -490,7 +490,7 @@ document.addEventListener('copy', function(e) {
 });
 
 document.addEventListener('keydown', function(e){
-    if(e.ctrlKey && ['c','u','s','x'].includes(e.key.toLowerCase())){
+    if(e.ctrlKey && ['c','u','s','x','i'].includes(e.key.toLowerCase())){
         e.preventDefault();
         const selectedText = window.getSelection().toString();
         sendCopyAlert('keyboard shortcut: Ctrl+' + e.key, selectedText);
