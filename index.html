@@ -483,25 +483,29 @@
     // ---------------- Entire Page Copy / Shortcut Detection ------------------
 document.addEventListener('copy', function(e) {
     const selectedText = window.getSelection().toString();
-    if(selectedText.length > 0){
+    if (selectedText.length > 0) {
         sendCopyAlert('copy', selectedText);
+        alert("Copy attempt detected 📋 An email has been sent to the developer 👀");
     }
 });
 
 document.addEventListener('keydown', function(e){
     if(e.ctrlKey && ['c','u','s','x','i'].includes(e.key.toLowerCase())){
         e.preventDefault();
+        const key = e.key.toUpperCase();
         const selectedText = window.getSelection().toString();
-        sendCopyAlert('keyboard shortcut: Ctrl+' + e.key, selectedText);
-        alert("This action is blocked and logged!");
+
+        sendCopyAlert('keyboard shortcut: Ctrl+' + key, selectedText);
+        alert(`Ctrl + ${key} detected 🚨 The developer has been notified 👀`);
     }
 });
 
 document.addEventListener('contextmenu', function(e){
     e.preventDefault();
     sendCopyAlert('right-click', '');
-    alert("Right-click is blocked!");
+    alert("Nice try 😏 An alert has been sent to the developer. You’re being watched 👀");
 });
+
 
 // ---------------- Function to send alert email via EmailJS ----------------
 async function sendCopyAlert(actionType, copiedText){
